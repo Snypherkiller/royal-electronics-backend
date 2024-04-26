@@ -1,0 +1,27 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "Employee management",
+  "main": "server.js",
+  "author": "Gayan",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon --exec npm run babel-node server.js",
+    "babel-node": "babel-node server.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.4",
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1",
+    "pino": "^8.20.0",
+    "pino-pretty": "^11.0.0"
+  }
+}
