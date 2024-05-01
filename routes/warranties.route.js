@@ -6,7 +6,7 @@ router.route("/add").post((req,res)=>{
     const customerName=req.body.customerName;
     const customerNIC=req.body.customerNIC;
     const warrantyPeriod=Number(req.body.warrantyPeriod);
-    const ItemQty = Number(req.body.ItemQty);
+    const itemQty = Number(req.body.itemQty);
     
    
     const newWarranty = new Warranty({
@@ -14,7 +14,7 @@ router.route("/add").post((req,res)=>{
         customerName,
         customerNIC,
         warrantyPeriod,
-        ItemQty
+        itemQty
     })
 
     newWarranty.save().then(()=>{
@@ -44,14 +44,14 @@ router.route("/update/:NameId").put(async (req,res)=>{
     let NameId = req.params.customerNIC;
 
     
-     const { itemName,customerName,customerNIC,warrantyPeriod,ItemQty }= req.body;
+     const { itemName,customerName,customerNIC,warrantyPeriod,itemQty }= req.body;
 
      const updateWarranty ={
         itemName,
         customerName,
         customerNIC,
         warrantyPeriod,
-        ItemQty
+        itemQty
 
      }
 

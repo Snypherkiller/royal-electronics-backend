@@ -6,7 +6,7 @@ router.route("/add").post((req,res)=>{
     const supplierNIC = req.body.supplierNIC;
     const itemName = req.body.itemName;
     const itemQty = Number(req.body.itemQty);
-    const ItemPrice=Number(req.body.ItemPrice);
+    const itemPrice=Number(req.body.itemPrice);
     const itemCategory = req.body.itemCategory;
     const totalPrice=Number(req.body.totalPrice);
 
@@ -15,7 +15,7 @@ router.route("/add").post((req,res)=>{
         supplierNIC,
         itemName,
         itemQty,
-        ItemPrice,
+        itemPrice,
         itemCategory,
         totalPrice
     })
@@ -47,14 +47,14 @@ router.route("/update/:NameId").put(async (req,res)=>{
     let NameId = req.params.supplierNIC;
 
     
-     const { supplierName,supplierNIC,itemName,itemQty,ItemPrice,itemCategory,totalPrice }= req.body;
+     const { supplierName,supplierNIC,itemName,itemQty,itemPrice,itemCategory,totalPrice }= req.body;
 
      const updateSupplier ={
         supplierName,
         supplierNIC,
         itemName,
         itemQty,
-        ItemPrice,
+        itemPrice,
         itemCategory,
         totalPrice
      }

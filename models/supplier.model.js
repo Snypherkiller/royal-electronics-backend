@@ -22,7 +22,7 @@ const SupplierSchema = new Schema({
         type : Number,
         required : false
     },
-    ItemPrice : {
+    itemPrice : {
         type : Number,
         required : true
     },

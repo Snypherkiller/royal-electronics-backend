@@ -25,7 +25,7 @@ const WarrantySchema = new Schema({
         required : false
     },
     
-   ItemQty : {
+   itemQty : {
     type : Number,
     required : true
     }
