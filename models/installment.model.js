@@ -25,6 +25,10 @@ const InstallmentSchema = new Schema({
     Payment : {
         type : Number,
         required: false
+    },
+    installment : {
+        type : Number,
+        required: false
     }
     
     

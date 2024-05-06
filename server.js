@@ -16,6 +16,8 @@ app.get("/", (req, res, next) => {
   res.send("<h2> Electrical Shop ERP <h2>");
   next();
 });
+
+
 //Gayan
 const employeeRouter = require("./routes/employees.route.js");
 
@@ -40,6 +42,9 @@ const reviewRoutes=require("./routes/review.route.js");
 const PCustomerRouter = require("./routes/previledgeCustomers.route.js");
 
 
+//chathuni
+const customerRouter =require("./routes/customer.route.js")
+
 
 
 
@@ -62,13 +67,16 @@ app.use("/delivery", deliveryRouter);
 
 //yatawara
 app.use("/installment",InstallmentRouter);
-app.use("/installmentDetails",InstallmentRouter);
+app.use("/installmentDetails",InstallmentDetails);
 
 //Heshani
-app.use('/review',reviewRoutes);
+app.use("/review",reviewRoutes);
 
 //Sakindu
 app.use("/PCustomer" , PCustomerRouter);
+
+//Chathuni
+app.use("/customer" , customerRouter)
 
 
 

@@ -98,5 +98,20 @@ router.get("/get/:id", async (req, res) => {
 });
 
 
+/*router.get("/get/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const item = await Item.findById({ id: id });
+        if (!item) {
+            return res.status(404).json({ status: "Item not found" });
+        }
+        res.status(200).json({ status: "Item fetched", item: item });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ status: "Error with item", error: err.message });
+    }
+});*/
+
+
 
 module.exports = router;

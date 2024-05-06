@@ -3,29 +3,31 @@ let installment = require('../models/installment.model.js');
 
 
 
-router.route("/add").post((req, res) => {
-    const name = req.body.name;
-    const NIC = req.body.NIC;
-    const Tel = Number(req.body.Tel);
-    const Address = req.body.Address;
-    const Payment = req.body.Payment;
-    const Instsllment = req.body.Instsllment;
+router.route("/add").post(async(req,res)=>{
+    const {name,NIC,Tel,Address,Payment,installment}= req.body; 
 
     const newinstallment = new installment({
-        name,
-        NIC,
-        Tel,
-        Address,
-        Payment,
-        Instsllment
-    });
+        name:name,
+        NIC:NIC,
+        Tel:Tel,
+        Address:Address,
+        Payment:Payment,
+        installment:installment
 
-    newinstallment.save().then(() => {
-        res.json("installment added");
-    }).catch((err) => {
+    })
+
+
+
+    newinstallment.save().then(()=>{
+        res.json("Installment Added")
+    }).catch((err)=>{
         console.log(err);
-    });
-});
+    })    
+
+})
+
+
+
 
 router.route("/").get((req, res) => {
     installment.find().then((installment) => {

@@ -33,6 +33,9 @@ router.route("/:id").get(async (req, res) => {
     });
 });
 
+
+  //insert data
+  
 router.route("/add").post((req, res) => {
   const name = req.body.name;
   const address = req.body.address;
@@ -62,7 +65,7 @@ router.route("/add").post((req, res) => {
     password,
   });
 
-  //insert data
+
 
   newemployee
     .save()

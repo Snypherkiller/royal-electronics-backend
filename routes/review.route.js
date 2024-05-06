@@ -1,4 +1,5 @@
 const router =require("express").Router();
+const review = require("../models/review.model");
 let Review=require("../models/review.model");
 
 ////// add review ................................../////
@@ -39,38 +40,66 @@ router.route('/reviewGet').get((req,res)=>{
 
 /// update review.....................///
 
-router.route('/reviewUpdate').put(async(req,res)=>{
+router.put("/reviewUpdate/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const {  review , reviewCatagory, reviewUser, productID } = req.body;
 
-   let object=req.body;
-   let id=object.data.reviewId;
-   let update_review= object.data.review;
-   let update_catagory= object.data.reviewCatagory;
+        const updateReview = {
+            review,
+            reviewCatagory,
+            reviewUser,
+            productID
+        };
 
-    
-     
-   
-    
-   const update=await Review.findByIdAndUpdate({ _id:id },{review:update_review,reviewCatagory:update_catagory},{new:true}).then(()=>{
-    
-    res.status(200).send({sta:"user update"});
-  }).catch((error)=>{
-    console.log("Error update:",error);
-  }) 
+        const updatereview = await Review.findOneAndUpdate({ _id: id }, updateReview, { new: true });
 
+        if (!updatereview) {
+            return res.status(404).json({ status: "Review not found" });
+        }
+        
+        res.status(200).json({ status: "Review updated", Review: updateReview });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ status: "Error with updating Review", error: err.message });
+    }
 });
 
 ///// delete review............////
 
-router.route('/reviewDelete').delete(async(req,res)=>{
+router.route("/reviewDelete/:id").delete(async (req, res) => {
+    let reviewId = req.params.id;
+  
+    await Review
+      .findByIdAndDelete(reviewId)
+      .then(() => {
+        res.status(200).send({ status: "Review deleted" });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        res
+          .status(500)
+          .send({ status: "Error with delete Review", error: err.massage });
+      });
+  });
 
-   let id=req.body;
 
-   await Review.findOneAndDelete({_id:id.id}).then(()=>{
-    res.status(200).send({state:"review deleted"});
-   }).catch((error)=>{
-     console.log("Error Delete:",error)
-   })
 
+  //fetched user data
+
+  router.get("/findR/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const review = await Review.findById(id);
+        if (!review) {
+            return res.status(404).json({ status: "Review not found" });
+        }
+        res.status(200).json({ status: "Review fetched", review: review });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ status: "Error with review", error: err.message });
+    }
 });
+
 
 module.exports=router;
