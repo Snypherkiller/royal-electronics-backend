@@ -45,6 +45,9 @@ const PCustomerRouter = require("./routes/previledgeCustomers.route.js");
 //chathuni
 const customerRouter =require("./routes/customer.route.js")
 
+//chathurika
+const PaymentDetailsRouter=require("./routes/payment.route.js")
+
 
 
 
@@ -77,6 +80,9 @@ app.use("/PCustomer" , PCustomerRouter);
 
 //Chathuni
 app.use("/customer" , customerRouter)
+
+//chathurika
+app.use("/Payment" , PaymentDetailsRouter)
 
 
 
