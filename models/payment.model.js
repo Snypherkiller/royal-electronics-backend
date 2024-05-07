@@ -35,5 +35,5 @@ const paymentDetails= new Schema({
 
 })
 
-const payment=mongoose.model("payment",paymentDetails)
-model.exports = payment;
+const Payment=mongoose.model("payment",paymentDetails)
+module.exports = Payment;

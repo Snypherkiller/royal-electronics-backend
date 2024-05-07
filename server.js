@@ -48,7 +48,8 @@ const customerRouter =require("./routes/customer.route.js")
 //chathurika
 const PaymentDetailsRouter=require("./routes/payment.route.js")
 
-
+//anushka
+const cartRouter=require("./routes/cart.route.js")
 
 
 
@@ -83,6 +84,9 @@ app.use("/customer" , customerRouter)
 
 //chathurika
 app.use("/Payment" , PaymentDetailsRouter)
+
+//anushka
+app.use("Cart" , cartRouter)
 
 
 
