@@ -8,7 +8,13 @@ import { connect } from "./utils/database.connection.js";
 const app = express();
 const PORT = process.env.PORT || "8090";
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE, PATCH",
+    credentials: true,
+  })
+)
 
 app.use(express.json({ limit: "20mb" }));
 

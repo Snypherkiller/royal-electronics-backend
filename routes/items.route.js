@@ -70,11 +70,11 @@ router.put("/update/:id", async (req, res) => {
     }
 });
 
-router.delete("/delete/:itemName", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
     try {
-        const itemName = req.params.itemName;
+        const id = req.params.id;
 
-        await Item.findOneAndDelete({ itemName: itemName });
+        await Item.findByIdAndDelete(id);
 
         res.status(200).json({ status: "Item deleted" });
     } catch (err) {
@@ -83,19 +83,20 @@ router.delete("/delete/:itemName", async (req, res) => {
     }
 });
 
-router.get("/get/:id", async (req, res) => {
-    try {
-        const id = req.params.id;
-        const item = await Item.findOne({ id: id });
-        if (!item) {
-            return res.status(404).json({ status: "Item not found" });
-        }
-        res.status(200).json({ status: "Item fetched", item: item });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ status: "Error with item", error: err.message });
-    }
-});
+router.route("get/:id").get(async (req, res) => {
+    let itemId = req.params.id;
+    console.log(itemId);
+    const item = await employee.findById(itemId)
+      .then((Item) => {
+        res.status(200).send({ status: "user fetched", item : Item });
+      })
+      .catch((err) => {
+        console.log(err.massage);
+        res
+          .status(500)
+          .send({ status: "Error with get user", error: err.massage });
+      });
+  });
 
 
 /*router.get("/get/:id", async (req, res) => {
