@@ -16,6 +16,31 @@ router.route("/").get((req, res) => {
       });
   });
 
+  //Login 
+
+  router.route("/login").post((req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+    console.log(req.body);
+    employee.findOne({ email: email })
+      .then((employee) => {
+        if (employee) {
+          if (employee.password == password)
+            res.status(200).send({ status: "success", id: employee._id });
+          else res.status(401).send({ status: "request failed" });
+        } else {
+          console.log("No employee")
+          res.json({ status: "error", message: "Email does not exist" });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        res
+          .status(500)
+          .send({ status: "Error with get user", error: err.message });
+      });
+  });
+
 //fetched user data
 
 router.route("/:id").get(async (req, res) => {
