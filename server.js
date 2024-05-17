@@ -46,6 +46,7 @@ const reviewRoutes=require("./routes/review.route.js");
 
 //Sakindu
 const PCustomerRouter = require("./routes/previledgeCustomers.route.js");
+const PreviledgeRouter =require("./routes/route.js")
 
 
 //chathuni
@@ -84,6 +85,7 @@ app.use("/review",reviewRoutes);
 
 //Sakindu
 app.use("/PCustomer" , PCustomerRouter);
+app.use("/PreviledgeCustomer" , PreviledgeRouter);
 
 //Chathuni
 app.use("/customer" , customerRouter)
