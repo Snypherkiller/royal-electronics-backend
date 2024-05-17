@@ -2,11 +2,17 @@ import express from "express";
 import cors from "cors";
 import logger from "./utils/logger.js";
 import "dotenv/config";
-
+import morgan from 'morgan';
+import router from './routes/route.js';
 import { connect } from "./utils/database.connection.js";
 
 const app = express();
 const PORT = process.env.PORT || "8090";
+
+app.use(express.json());
+app.use(cors());
+app.use(morgan('tiny'));
+app.disable('x-powered-by');
 
 app.use(
   cors({
