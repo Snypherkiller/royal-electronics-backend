@@ -39,7 +39,7 @@ export async function register(req,res){
   //console.log('req.body:', req.body);
 
     try {
-        const { username, password, profile, email , firstname , lastname , address , mobile} = req.body;        
+        const { username, password, profile, email} = req.body;        
 
         // check the existing user
         /**const existUsername = new Promise((resolve, reject) => {
