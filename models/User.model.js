@@ -1,29 +1,4 @@
-<<<<<<< HEAD
-const mongoose=require("mongoose")
 
-const UserSchema=new mongoose.Schema({
-    email:{
-        type:String,
-        required:true,
-        unique:true
-    },
-    password:{
-         type:String,
-         required:true   
-    },
-    userName:{
-        type:String,
-        required:true
-    },
-    userType:{
-        type:String,
-        required:true
-    }
-});
-
-const User=mongoose.model("User",UserSchema);
-module.exports=User;
-=======
 import mongoose from "mongoose";
 
 export const UserSchema = new mongoose.Schema({
@@ -50,4 +25,3 @@ export const UserSchema = new mongoose.Schema({
 });
 
 export default mongoose.model.Users || mongoose.model('User', UserSchema);
->>>>>>> 068cdcef10bae0820f39fb8790f6008be104519b

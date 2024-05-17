@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 
 /** import all controllers */
-import * as controller from '../controllers/appController.js';
+import * as controller from './appController.js';
 import { registerMail } from '../controllers/mailer.js'
 import Auth, { localVariables } from '../middleware/auth.js';
 
